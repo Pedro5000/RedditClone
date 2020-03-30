@@ -1,27 +1,35 @@
-<div class="container">
-  <div class="row">
-    <div class="col-12 pt-3 pb-3">
-      <div class="float-right">
-        <% if account_signed_in? %>
+  <div class="pl-3 pr-3 pt-1">
+    <div class="float-right">
+      <% if account_signed_in? %>
 
-          <div class="dropdown">
-            <a class="btn btn-white dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= current_account.full_name %>
-            </a>
+        <div class="dropdown">
+          <a class="btn btn-white dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= current_account.full_name %>
+          </a>
 
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <%= link_to 'Profile', profile_path(current_account.username), class: 'dropdown-item' %>
-              <%= link_to 'Settings', edit_account_registration_path, class: 'dropdown-item' %>
-              <%= link_to 'Sign Out', destroy_account_session_path, method: :delete, class: 'dropdown-item' %>
-            </div>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <%= link_to 'Profile', profile_path(current_account.username), class: 'dropdown-item' %>
+            <%= link_to 'Settings', edit_account_registration_path, class: 'dropdown-item' %>
+            <%= link_to 'Sign Out', destroy_account_session_path, method: :delete, class: 'dropdown-item' %>
           </div>
+        </div>
 
-        <% else %>
-          <%= link_to 'Log In', new_account_session_path, class: 'btn btn-outline-primary' %>
-          <%= link_to 'Sign Up', new_account_registration_path, class: 'btn btn-primary' %>
-        <% end %>
-      </div>
-      <p class="h3"> <%= link_to 'Reddit Clone', root_path %></p>
+      <% else %>
+        <%= link_to 'Log In', new_account_session_path, class: 'btn btn-outline-primary reddit-btn reddit-outline', style: 'margin-right: 10px;' %>
+        <%= link_to 'Sign Up', new_account_registration_path, class: 'btn btn-primary reddit-btn reddit-blue' %>
+
+        <div class="dropdown float-right">
+          <a class="btn btn-white dropdown-toggle reddit-user-toggle" style="color: grey;" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-user" style="font-size: 19px; margin-left: 8px; margin-right: 10px; color: grey;"></i>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <%= link_to 'Profile', '', class: 'dropdown-item' %>
+            <%= link_to 'Settings', '', class: 'dropdown-item' %>
+            <%= link_to 'Sign Out', '', class: 'dropdown-item' %>
+          </div>
+        </div>
+
+      <% end %>
     </div>
+    <p class="h3"> <%= image_tag asset_path('logo.png'), size: "32x32" %> <%= link_to 'reddit clone', root_path, style: 'font-size: 20px; color: #000;' %></p>
   </div>
-</div>

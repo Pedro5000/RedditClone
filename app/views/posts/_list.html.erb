@@ -1,5 +1,5 @@
 <% @posts.each do |post| %>
-  <div class="card p-3 mb-3">
+  <div class="card p-3 mb-3 reddit-post-card">
     <div class="row">
       <div class="col-1 text-center">
       <div class="fa fa-arrow-up upvote"></div>
@@ -7,8 +7,15 @@
       <div class="fa fa-arrow-down downvote"></div>
       </div>
       <div class="col-11">
-        <h4 class="mb-1"><%= link_to post.title, community_post_path(post.community_id, post) %></h4>
-        <p><small><%= link_to post.community.name, community_path(post.community) %> Posted by <%= link_to post.account.full_name, profile_path(post.account.username) %> <%= time_ago_in_words post.created_at %> ago.</small></p>
+        <div class="float-right">
+          <%= form_for @subscription do |f| %>
+            <%= f.hidden_field :community_id, value: post.community.id %>
+            <%= f.submit '+ Join', class: 'btn btn-primary reddit-blue', style: 'padding-top: 1px; padding-bottom: 1px;' %>
+          <% end %>
+        </div>
+
+        <p class="mb-1 post-details"><small><strong><%= link_to "r/#{post.community.url}", community_path(post.community) %></strong> <span>• Posted by <%= link_to "u/#{post.account.username}", profile_path(post.account.username) %> <%= time_ago_in_words post.created_at %> ago.</span></small></p>
+        <h5><%= link_to post.title, community_post_path(post.community_id, post) %></h5>
         <p><%= truncate post.body, length: 200 %></p>
       </div>
     </div>
