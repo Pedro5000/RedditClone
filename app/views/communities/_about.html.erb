@@ -1,0 +1,8 @@
+<div class="card p-3">
+  <p class="h4">About this community</p>
+  <p class="mt-2"><%= @community.summary %></p>
+  <p><%= pluralize @subscriber_count, 'member' %></p>
+</div>
+<small>
+  <%= simple_format @community.rules %>
+</small>

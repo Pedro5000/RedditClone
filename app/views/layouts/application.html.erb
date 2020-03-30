@@ -4,9 +4,10 @@
     <title>Reddit Clone</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= stylesheet_link_tag 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh" crossorigin="anonymous"></script>
+    <%= javascript_pack_tag 'application' %>
     <%= favicon_link_tag asset_path('logo.png') %>
   </head>
 
@@ -26,8 +27,6 @@
                 </button>
               </div>
             <% end %>
-
-
 
             <%= yield %>
           </div>

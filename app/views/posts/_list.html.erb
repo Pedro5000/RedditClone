@@ -1,22 +1,29 @@
 <% @posts.each do |post| %>
-  <div class="card p-3 mb-3 reddit-post-card">
+  <div class="card mb-3 reddit-post-card">
     <div class="row">
       <div class="col-1 text-center">
-      <div class="fa fa-arrow-up upvote"></div>
-      <div class="font-weight-bold">0</div>
-      <div class="fa fa-arrow-down downvote"></div>
+        <div  id="vote-actions-<%= post.id %>" class="vote bg-light" data-id="<%= post.id %>">
+          <div class="fa fa-arrow-up upvote <%= is_upvoted post %>"></div>
+          <div class="font-weight-bold score"><%= post.score %></div>
+          <div class="fa fa-arrow-down downvote <%= is_downvoted post %>"></div>
+        </div>
       </div>
       <div class="col-11">
-        <div class="float-right">
-          <%= form_for @subscription do |f| %>
-            <%= f.hidden_field :community_id, value: post.community.id %>
-            <%= f.submit '+ Join', class: 'btn btn-primary reddit-blue', style: 'padding-top: 1px; padding-bottom: 1px;' %>
+        <div class="pt-2 pr-2">
+          <div class="float-right">
+          <% if current_account.subscriptions.includes(post.community) %>
+            <button class="btn btn-primary reddit-outline" style="padding-top: 1px; padding-bottom: 1px; background-color: #fff;">Joined</button>
+          <% else %>
+            <%= form_for @subscription do |f| %>
+              <%= f.hidden_field :community_id, value: post.community.id %>
+              <%= f.submit '+ Join', class: 'btn btn-primary reddit-blue', style: 'padding-top: 1px; padding-bottom: 1px;' %>
+            <% end %>
           <% end %>
+          </div>
+          <p class="mb-1 post-details"><small><strong><%= link_to "r/#{post.community.url}", community_path(post.community) %></strong> <span>• Posted by <%= link_to "u/#{post.account.username}", profile_path(post.account.username) %> <%= time_ago_in_words post.created_at %> ago.</span></small></p>
+          <h5><%= link_to post.title, community_post_path(post.community_id, post) %></h5>
+          <p><%= truncate post.body, length: 200 %></p>
         </div>
-
-        <p class="mb-1 post-details"><small><strong><%= link_to "r/#{post.community.url}", community_path(post.community) %></strong> <span>• Posted by <%= link_to "u/#{post.account.username}", profile_path(post.account.username) %> <%= time_ago_in_words post.created_at %> ago.</span></small></p>
-        <h5><%= link_to post.title, community_post_path(post.community_id, post) %></h5>
-        <p><%= truncate post.body, length: 200 %></p>
       </div>
     </div>
   </div>

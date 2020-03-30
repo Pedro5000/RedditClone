@@ -2,16 +2,27 @@
 .downvote {
   display: block;
   width: 100%;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  color: #000;
-
-  &.active {
-    color: #f0f0f0;
-  }
+  padding-top: 0px;
+  padding-bottom: 0px;
+  color: #878a8c;
 
   &:hover {
     color: #cc3700;
     cursor: pointer;
   }
+}
+
+.active {
+  color: #cc3700;
+}
+
+.vote {
+  padding-top: 10px;
+  height: 100%;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.score {
+  font-size: 14px;
 }
