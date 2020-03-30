@@ -4,13 +4,13 @@
     <title>Reddit Clone</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
+    <%= render partial: 'layouts/header' %>
 
     <section class="bg-light">
       <div class="container">
@@ -23,6 +23,6 @@
     </section>
 
 
-    <%= render 'layouts/footer' %>
+    <%= render partial: 'layouts/footer' %>
   </body>
 </html>
