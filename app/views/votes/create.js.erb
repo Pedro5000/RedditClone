@@ -4,10 +4,8 @@ $("#vote-actions-<%= @post.id %> .downvote, #vote-actions-<%= @post.id %> .upvot
 
 <% if @new_vote %>
   <% if @is_upvote == "true" %>
-  $("#vote-actions-<%= @post.id %>").find(".upvote").addClass("active");
+    $("#vote-actions-<%= @post.id %>").find(".upvote").addClass("active");
   <% else %>
-  $("#vote-actions-<%= @post.id %> .downvote").addClass("active");
+    $("#vote-actions-<%= @post.id %> .downvote").addClass("active");
   <% end %>
 <% end %>
-
-
