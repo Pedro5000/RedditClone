@@ -9,6 +9,9 @@ gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
 # gem 'sqlite3', '~> 1.4'
 gem 'devise'
 gem 'pg'
+
+gem 'friendly_id', '~> 5.2.4'
+
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
