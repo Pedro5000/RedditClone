@@ -4,4 +4,7 @@ class Community < ApplicationRecord
   has_many :posts
   has_many :subscriptions
   has_many :subscribers, through: :subscriptions, source: :account
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
 end

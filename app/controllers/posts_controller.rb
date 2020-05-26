@@ -11,6 +11,7 @@ class PostsController < ApplicationController
     @comment = Comment.new
     @community = @post.community
     @subscriber_count = @community.subscribers.count
+    @post = Post.friendly.find(params[:id])
   end
 
   def new
@@ -34,7 +35,7 @@ class PostsController < ApplicationController
   private
 
   def set_post
-    @post = Post.includes(:comments).find(params[:id])
+    @post = Post.friendly.includes(:comments).find(params[:id])
   end
 
   def auth_subscriber
